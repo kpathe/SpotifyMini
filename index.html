@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Mini - Your lite music player</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="Z-Assets/logo.png" type="image/x-icon" />
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li class="brand">
+          <img src="Z-Assets/logo.png" alt="Spotify" />Spotify
+        </li>
+        <li id="home">Home</li>
+        <li id="about">About</li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <div class="songList">
+        <h1>Liked Songs</h1>
+        <div class="songItemContainer">
+          <div class="songItem">
+            <img alt="1" />
+            <span class="songName">Let me Love You</span>
+
+            <span class="songListPlay">
+              <span class="timestamp">
+                05:34
+                <i id="1" class="songItemPlay fa-regular fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+
+          <div class="songItem">
+            <img alt="2" />
+            <span class="songName">Let me Love You</span>
+
+            <span class="songListPlay">
+              <span class="timestamp">
+                05:34
+                <i id="2" class="songItemPlay fa-regular fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+
+          <div class="songItem">
+            <img alt="3" />
+            <span class="songName">Let me Love You</span>
+
+            <span class="songListPlay">
+              <span class="timestamp">
+                05:34
+                <i id="3" class="songItemPlay fa-regular fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+
+          <div class="songItem">
+            <img alt="4" />
+            <span class="songName">Let me Love You</span>
+
+            <span class="songListPlay">
+              <span class="timestamp">
+                05:34
+                <i id="4" class="songItemPlay fa-regular fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+
+          <div class="songItem">
+            <img alt="5" />
+            <span class="songName">Let me Love You</span>
+
+            <span class="songListPlay">
+              <span class="timestamp">
+                05:34
+                <i id="5" class="songItemPlay fa-regular fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+
+          <div class="songItem">
+            <img alt="6" />
+            <span class="songName">Let me Love You </span>
+
+            <span class="songListPlay">
+              <span class="timestamp">
+                05:34
+                <i id="6" class="songItemPlay fa-regular fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+
+          <div class="songItem">
+            <img alt="7" />
+            <span class="songName">Let me Love You</span>
+
+            <span class="songListPlay">
+              <span class="timestamp">
+                05:34
+                <i id="7" class="songItemPlay fa-regular fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+
+          <div class="songItem">
+            <img alt="8" />
+            <span class="songName">Let me Love You</span>
+
+            <span class="songListPlay">
+              <span class="timestamp">
+                05:34
+                <i id="8" class="songItemPlay fa-regular fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+
+          <div class="songItem">
+            <img alt="9" />
+            <span class="songName">Let me Love You</span>
+
+            <span class="songListPlay">
+              <span class="timestamp">
+                05:34
+                <i id="9" class="songItemPlay fa-regular fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+
+          <div class="songItem">
+            <img alt="10" />
+            <span class="songName">Let me Love You</span>
+
+            <span class="songListPlay">
+              <span class="timestamp">
+                05:34
+                <i id="10" class="songItemPlay fa-regular fa-circle-play"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bottom">
+      <div class="songInfo">
+        <div>
+          <img id="gif" src="Z-Assets/playing.gif" width="50px" alt="" />
+        </div>
+
+        <span id="masterSongName">Badra Bahaar</span>
+      </div>
+
+      <!-- ye wala input Progress bar ke liye hai -->
+      <input
+        type="range"
+        name="range"
+        id="progressBar"
+        min="0"
+        value="0"
+        max="100"
+      />
+
+      <div class="icons">
+        <!-- <img src="Z-Assets/Icons/mute.svg" alt="" width="20px" /> -->
+
+        <!-- <img src="Z-Assets/Icons/volume.svg" alt="" width="20px" /> -->
+
+        <!-- <img src="Z-Assets/Icons/shuffle.svg" alt="" width="20px" /> -->
+
+        <!-- <img src="Z-Assets/Icons/repeat.svg" alt="" width="20px" /> -->
+
+        <img
+          id="previous"
+          src="Z-Assets/Icons/previous.svg"
+          alt=""
+          width="20px"
+        />
+
+        <img
+          id="masterPlay"
+          src="Z-Assets/Icons/play.svg"
+          alt=""
+          width="20px"
+        />
+
+        <img id="next" src="Z-Assets/Icons/next.svg" alt="" width="20px" />
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/cd431ba825.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+
+<!-- 
+ To bhai aaj 14:58 17/08/2024 se hamara start ho rha hai HTML,CSS,JavaScript ke projects banane ka silsila. Jisme aur bhi technologies add hoti jayengi jaise React,node.js Tailwind Css, Mongo,Express wgera wgera... jaise jaise main unko sikhta jaunga unke projects bna bna ke aur in-depth experience leta jaunga.
+
+
+ Baat karein iss project ki to ye pehla hi project apna apne RIVAL Spotify ka clone hai. halanki Fullstack clone nhi hai.(BG mein Veera Dheera song chal rha hai abhi 15:01 iss time par...) Han to Spotify ka fullstack clone nhi hai bas ek chhota sa audio player hai. lekin look and feel spotify wali hai.
+
+ To badhiya hai. Projects banane ki journey aone Rival ke clone bnane se hi shuru ho rhi hai to. Hana...? 
+
+ Han bhai bilkul ...
+
+ To shuru karte hain...! Waise abhi BUJJI ki theme aa gyi spotify mein.... 
+ 
+ 15:03 17/08/2024 
+ aur ab Kalki 2898 AD ki theme shuru ho gyi...
+
+
+ Chalo yar ab iske song ke bad main start kar hi dunga . Okay yes! 
+
+ 15:32 17/08/2024
+ to maine soan papdi bhi kha liya. ab main shuru kar hi rha hun.Les GO!🚀
+  -->
