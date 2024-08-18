@@ -20,6 +20,8 @@ body {
 
 nav {
   font-family: "Satoshi-Bold", sans-serif;
+  position: sticky;
+  top: 0;
 }
 
 nav ul {
@@ -63,6 +65,7 @@ nav ul li {
 .bottom {
   position: sticky;
   bottom: 0px;
+  /* height: min-content; */
   background-color: black;
   color: white;
   padding: 5px;
@@ -97,17 +100,18 @@ nav ul li {
 }
 
 .icons {
-  margin: 10px 0px;
+  margin-bottom: 3px;
 }
 
 #progressBar {
-  width: 80vw;
+  width: 50vw;
   margin: 10px 0;
   cursor: pointer;
 }
 
 .songItem {
-  height: 20px;
+  height: 30px;
+  width: 100%;
   display: flex;
   background-color: #1ed760;
   color: black;
@@ -120,9 +124,9 @@ nav ul li {
 }
 
 .songItem img {
-  width: 30px;
+  width: 40px;
   margin: 0 10px;
-  border-radius: 50%;
+  border-radius: 5px;
 
   /* border: 2px solid black; */
 }
@@ -150,4 +154,8 @@ nav ul li {
 #gif {
   opacity: 0;
   transition: opacity 0.5s ease-in;
+}
+
+.songItemPlay{
+  cursor: pointer;
 }

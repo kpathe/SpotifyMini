@@ -6,7 +6,6 @@ let songIndex = 1;
 let audioElement = new Audio("Z-Assets/songs/1.mp3");
 
 let masterPlay = document.getElementById("masterPlay");
-console.log(masterPlay);
 
 let progressBar = document.getElementById("progressBar");
 
@@ -69,17 +68,37 @@ let songs = [
   },
 ];
 
+function getAudioDuration(audioElement) {
+  return new Promise((resolve) => {
+    audioElement.onloadedmetadata = function () {
+      let duration = Math.floor(audioElement.duration); // Get duration in seconds
+      let minutes = Math.floor(duration / 60);
+      let seconds = duration % 60;
+      let formattedDuration = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`; // Format as minutes:seconds
+      resolve(formattedDuration);
+    };
+  });
+}
+
 songItems.forEach((element, i) => {
-  // console.log(element, i);
+  // Set the cover image and song name
   element.getElementsByTagName("img")[0].src = songs[i].coverPath;
   element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
+
+  // Create a new audio element to get the duration
+  const audioElement = new Audio(songs[i].filePath);
+  audioElement.preload = "metadata"; // Ensure metadata is loaded
+
+  // Get the duration and set it to the timestamp
+  getAudioDuration(audioElement).then((duration) => {
+    element.getElementsByClassName("timestamp")[0].innerText = duration;
+  });
 });
 
 // Handle play/pause click
 masterPlay.addEventListener("click", () => {
   if (audioElement.paused || audioElement.currentTime <= 0) {
     audioElement.play();
-    console.log("Played");
     masterPlay.src = "Z-Assets/Icons/pause.svg";
     gif.style.opacity = 1;
   } else {
@@ -94,6 +113,14 @@ audioElement.addEventListener("timeupdate", () => {
   //   update seekbar
   progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
   progressBar.value = progress;
+
+  
+
+  if (audioElement.currentTime == audioElement.duration) {
+    audioElement.pause();
+    masterPlay.src = "Z-Assets/Icons/play.svg";
+    gif.style.opacity = 0;
+  }
 });
 
 progressBar.addEventListener("input", () => {
@@ -111,29 +138,33 @@ const makeAllPlays = () => {
 
 songItemPlay.forEach((element) => {
   element.addEventListener("click", (e) => {
-    makeAllPlays(); //sbko play ka icon de dega
+    makeAllPlays();
 
     songIndex = parseInt(e.target.id);
-    // console.log(songIndex);
-
     e.target.classList.remove("fa-circle-play");
     e.target.classList.add("fa-circle-pause");
 
     audioElement.src = `Z-Assets/songs/${songIndex}.mp3`;
     audioElement.currentTime = 0;
-    audioElement.play();
-    gif.style.opacity = 1;
+    progressBar.value = 0; // Reset progress bar
     masterSongName.innerText = songs[songIndex - 1].songName;
 
-    masterPlay.src = "Z-Assets/Icons/pause.svg";
+    audioElement.addEventListener("loadeddata", () => {
+      playSong();
+    });
   });
 });
 
+let next = document.getElementById("next");
 let previous = document.getElementById("previous");
 
-let next = document.getElementById("next");
+function playSong() {
+  audioElement.play();
+  masterPlay.src = "Z-Assets/Icons/pause.svg";
+  gif.style.opacity = 1;
+}
 
-next.addEventListener("click", (e) => {
+next.addEventListener("click", () => {
   if (songIndex >= 10) {
     songIndex = 1;
   } else {
@@ -142,12 +173,12 @@ next.addEventListener("click", (e) => {
 
   audioElement.src = `Z-Assets/songs/${songIndex}.mp3`;
   audioElement.currentTime = 0;
-  audioElement.play();
-  gif.style.opacity = 1;
-  //   console.log(songIndex);
+  progressBar.value = 0; // Reset progress bar
   masterSongName.innerText = songs[songIndex - 1].songName;
 
-  masterPlay.src = "Z-Assets/Icons/pause.svg";
+  audioElement.addEventListener("loadeddata", () => {
+    playSong();
+  });
 });
 
 previous.addEventListener("click", () => {
@@ -159,13 +190,12 @@ previous.addEventListener("click", () => {
 
   audioElement.src = `Z-Assets/songs/${songIndex}.mp3`;
   audioElement.currentTime = 0;
-  audioElement.play();
-  gif.style.opacity = 1;
-  //   console.log(songIndex);
-
+  progressBar.value = 0; // Reset progress bar
   masterSongName.innerText = songs[songIndex - 1].songName;
 
-  masterPlay.src = "Z-Assets/Icons/pause.svg";
+  audioElement.addEventListener("loadeddata", () => {
+    playSong();
+  });
 });
 
 // progressBar.addEventListener("input", () => {
